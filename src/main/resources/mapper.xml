@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用，后面会讲 -->
+<mapper namespace="test">
+
+    <select id="FindPersonById" parameterType="Integer" resultType="com.springboot.Entity.Person">
+            select * from springboot where id=#{id};
+    </select>
+
+    <select id="FindAll" resultType="com.springboot.Entity.Person">
+            select * from springboot
+    </select>
+    <update id="UpdateSalary" parameterType="Integer" >
+        update springboot set
+        salary=case age
+        when 23 then 2000
+        when 24 then 2100
+        when 26 then 2200
+        end
+        where age in (23,24,26)
+    </update>
+</mapper>
